@@ -11,3 +11,7 @@
 </div>
 
 <gp-photos [photos]="photos | filterByDescription: filter"></gp-photos>
+<gp-load-button 
+  (click)="load()" 
+  [hasMore]="hasMore">
+</gp-load-button>
