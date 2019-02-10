@@ -1,7 +1,7 @@
 import { Component, OnInit, Injectable, Input } from "@angular/core";
 
 @Component({
-    selector: 'ng-photo',
+    selector: 'gp-photo',
     templateUrl: 'photo.component.html'
 })
 
