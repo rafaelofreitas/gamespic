@@ -5,5 +5,5 @@ import { Input, Component } from "@angular/core";
     templateUrl: './card.component.html'
 })
 export class CardComponent {
-    @Input() title: string = "";
+    @Input() title: string = '';
 }
