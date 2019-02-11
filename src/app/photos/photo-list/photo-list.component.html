@@ -1,17 +1,5 @@
-<div class="text-center mt-3 mb-3">
-    <form>
-        <input
-            class="rounded"
-            type="search"
-            placeholder="search..."
-            autofocus
-            (keyup)="debounce.next($event.target.value)"
-            >
-    </form>
-</div>
-
+<gp-search (onTyping)="filter = $event" [value]="filter">
+</gp-search>
 <gp-photos [photos]="photos | filterByDescription: filter"></gp-photos>
-<gp-load-button 
-  (click)="load()" 
-  [hasMore]="hasMore">
+<gp-load-button (click)="load()" [hasMore]="hasMore">
 </gp-load-button>
