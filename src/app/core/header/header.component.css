@@ -1,0 +1,7 @@
+.img-logo {
+    height: 40px;
+    width: 40px;
+    background: url(/assets/img/logo-gamespic.png) no-repeat;
+    background-size: contain;
+    float: left;
+}
