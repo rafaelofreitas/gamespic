@@ -1,10 +1,10 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { Router } from "@angular/router";
 
 import { UserNotTakenValidatorService } from "./user-not-taken.validator.service";
 import { NewUser } from "./new-user";
 import { SignUpService } from "./signup.service";
-import { Router } from "@angular/router";
 
 @Component({
     templateUrl: './signup.component.html'

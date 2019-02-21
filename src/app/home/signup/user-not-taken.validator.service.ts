@@ -1,8 +1,8 @@
 import { Injectable } from "@angular/core";
 import { AbstractControl } from "@angular/forms";
+import { debounceTime, switchMap, map, first } from 'rxjs/operators'
 
 import { SignUpService } from "./signup.service";
-import { debounceTime, switchMap, map, first } from 'rxjs/operators'
 
 @Injectable({ providedIn: 'root' })
 export class UserNotTakenValidatorService {
