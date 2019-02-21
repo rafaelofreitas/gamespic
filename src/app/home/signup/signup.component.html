@@ -20,24 +20,36 @@
         <input formControlName="userName" placeholder="user name" class="form-control">
         <gp-vmessage *ngIf="signupForm.get('userName').errors?.required" text="Usuário é Obrigatório!">
         </gp-vmessage>
+
         <gp-vmessage *ngIf="signupForm.get('userName').errors?.minlength" text="Tamanho mínimo é 2!">
         </gp-vmessage>
+
         <gp-vmessage *ngIf="signupForm.get('userName').errors?.maxlength" text="Tamanho máximo é 30!">
         </gp-vmessage>
-        <gp-vmessage *ngIf="signupForm.get('userName').errors?.pattern" text="Most be lowerCase!">
+
+        <gp-vmessage *ngIf="signupForm.get('userName').errors?.pattern" text="Deve ser minúsculo!">
         </gp-vmessage>
+
+        <gp-vmessage *ngIf="signupForm.get('userName').errors?.userNameTaken" text="
+        Nome de Usuário Já Utilizado!">
+        </gp-vmessage>
+        <small *ngIf="signupForm.get('userName').valid" class="text-success">Usuário Disponível</small>
+
     </div>
+
     <div class="form-group">
         <input formControlName="password" type="password" placeholder="password" class="form-control">
         <gp-vmessage *ngIf="signupForm.get('password').errors?.required" text="Senha é Obrigatório!">
         </gp-vmessage>
+
         <gp-vmessage *ngIf="signupForm.get('password').errors?.minlength" text="Tamanho mínimo é 8!">
         </gp-vmessage>
+
         <gp-vmessage *ngIf="signupForm.get('password').errors?.maxlength" text="Tamanho máximo é 14!">
         </gp-vmessage>
     </div>
-    <button [disabled]="signupForm.invalid" class="btn btn-primary btn-block">Register</button>
 
+    <button [disabled]="signupForm.invalid || signupForm.pending" class="btn btn-primary btn-block">Registrar</button>
     <p>Já possui Cadastro?
         <a [routerLink]="['']"> Entrar</a>
     </p>
