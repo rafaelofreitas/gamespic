@@ -1,3 +1,30 @@
-<p>
-  photo-form works!
-</p>
+<div class="container">
+  <form [formGroup]="photoForm" class="row" (submit)="upload()">
+    <div class="col-md-6 text-center">
+      <input formControlName="file" type="file" accept="image/*" (change)="file = $event.target.files[0]">
+      <gp-vmessage text="Selecione a foto!" *ngIf="photoForm.get('file').errors?.required">
+      </gp-vmessage>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <textarea formControlName="description" class="form-control form-control-sm"
+          placeholder="descrição da foto"></textarea>
+        <gp-vmessage text="Tamanho máximo é 300 caracteres!" *ngIf="photoForm.get('description').errors?.maxlength">
+        </gp-vmessage>
+      </div>
+
+      <div class="form-group">
+        <label class="text-muted">
+          Permitir comentários
+          <input formControlName="allowComments" type="checkbox">
+        </label>
+      </div>
+
+      <button [disabled]="photoForm.invalid" type="submit" class="btn btn-primary btn-block">
+        Envio
+      </button>
+
+      <a class="btn btn-secondary btn-block">Cancelar</a>
+    </div>
+  </form>
+</div>
