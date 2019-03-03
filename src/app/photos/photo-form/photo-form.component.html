@@ -1,10 +1,24 @@
 <div class="container">
   <form [formGroup]="photoForm" class="row" (submit)="upload()">
     <div class="col-md-6 text-center">
-      <input formControlName="file" type="file" accept="image/*" (change)="file = $event.target.files[0]">
-      <gp-vmessage text="Selecione a foto!" *ngIf="photoForm.get('file').errors?.required">
-      </gp-vmessage>
+      <div class="form-group" *ngIf="!preview; else previewImage">
+        <button immediateClick="button" (click)="fileInput.click()" class="btn btn-primary">
+          <i class="fa fa-image fa-4x align-middle"></i>
+        </button>
+        <input #fileInput hidden formControlName="file" type="file" accept="image/*"
+          (change)="handleFile(file = $event.target.files[0])">
+        <gp-vmessage text="Selecione a foto!" *ngIf="photoForm.get('file').errors?.required">
+        </gp-vmessage>
+      </div>
+
+      <ng-template #previewImage>
+        <div class="text-center">
+          <gp-photo [url]="preview" title="Preview">
+          </gp-photo>
+        </div>
+      </ng-template>
     </div>
+
     <div class="col-md-6">
       <div class="form-group">
         <textarea formControlName="description" class="form-control form-control-sm"
@@ -19,12 +33,11 @@
           <input formControlName="allowComments" type="checkbox">
         </label>
       </div>
-
       <button [disabled]="photoForm.invalid" type="submit" class="btn btn-primary btn-block">
         Envio
       </button>
 
-      <a class="btn btn-secondary btn-block">Cancelar</a>
+      <a class="btn btn-secondary btn-block" [routerLink]="['']">Cancelar</a>
     </div>
   </form>
 </div>
